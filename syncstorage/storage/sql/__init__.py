@@ -710,10 +710,7 @@ class SQLStorage(SyncStorage):
         # Add it to the current timestamp to get an absolute time.
         # If not provided or None, this means no ttl should be set.
         if "ttl" in data:
-            if data["ttl"] is None:
-                row["ttl"] = MAX_TTL
-            else:
-                row["ttl"] = data["ttl"] + int(session.timestamp)
+            row["ttl"] = MAX_TTL
         return row
 
     def _prepare_bui_row(self, session, batchid, userid, item, data):
